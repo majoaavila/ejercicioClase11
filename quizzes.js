@@ -61,13 +61,14 @@ console.log('____________________________')
 
 
 // 05.- Escriba un programa para modificar el valor de la segunda propiedad del siguiente objeto:
+// La nueva edad debe ser 35.
 var student5 = {
     name: "David Rayy",
     age: 34,
     job: "engineer",
     hobbies: ['Sky', 'football', 'walking my dog']
 };
-// La nueva edad debe ser 35.
+
 
 console.log('EJERCICIO 05');
 // no sirvio: Object.defineProperty(student5, 'age', {
@@ -91,8 +92,8 @@ var student6 = {
 console.log('EJERCICIO 06')
 //opcion 1
 Object.defineProperty(student6, 'pet1', {
-    value : 'cat',
-    enumerable : true
+    value: 'cat',
+    enumerable: true
 });
 //opcion 2
 student6.pet2 = 'dog'
@@ -116,6 +117,66 @@ const objeto = {
 }
 console.log(objeto);
 
+///////////////////////////////////////////////////////////////////////
+// What’s the result of executing this code and why.
+//undefined: porque la variable a, no esta definida aun
+//2: porque esta imprimiendo la funcion foo, que retorna ese valor
+function test() {
+    console.log(a);
+    console.log(foo());
+
+    var a = 1;
+    function foo() {
+        return 2;
+    }
+}
+test();
+
+
+
+//  What is result?
+//nada porque no se esta imprimiendo nada.
+var a = 1;
+
+function someFunction(number) {
+    function otherFunction(input) {
+        return a;
+    }
+
+    a = 5;
+
+    return otherFunction;
+}
+
+var firstResult = someFunction(9);
+var result = firstResult(2);
+
+
+// What is the result of the following code? Explain your answer.
+//2: porque  se esta regresando la variable a, de la cual, toma el ultimo valor asignado
+var a = 1
+function foo() {
+    var a = 2;
+
+    function bar() {
+        console.log(a);
+    }
+
+    return bar;
+}
+var baz = foo();
+baz();
+
+
+// What will you see in the console for the following example?
+//nada porque a return le falta lo que va a regresar.
+var a = 1;
+function b() {
+    a = 10;
+    return;
+    function a() { }
+}
+b();
 
 
 
